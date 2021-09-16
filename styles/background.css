@@ -1,6 +1,6 @@
 body {
     padding: 0;
-    background-image: url("images/wallpaper.png"), linear-gradient(#192758, #2E4F9E);
+    background-image: url("../images/wallpaper.png"), linear-gradient(#192758, #2E4F9E);
     background-position: bottom right;
     background-repeat: no-repeat;
     
