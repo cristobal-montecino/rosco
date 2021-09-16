@@ -1,0 +1,93 @@
+.circ {
+    --rotation-angle: 0deg;
+    transform: rotate(var(--rotation-angle)) translate(calc(var(--ruleta-radius) - 50%), 0%) rotate(calc(-1.0*var(--rotation-angle))) translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    opacity: 0;
+    border-radius: 50%;
+    width: calc(2.0*var(--circ-radius));
+    height: calc(2.0*var(--circ-radius));
+    text-align: center;
+    line-height: calc(2.0*var(--circ-radius));
+    vertical-align: middle;
+    display: inline-block;
+    background-color: var(--circ-incomplete-color);
+}
+
+.ruleta {
+    --circ-complete-correct-color: rgb(127, 253, 115);
+    --circ-complete-incorrect-color: rgb(255, 108, 108);
+    --circ-incomplete-color: rgb(206, 206, 206);
+    --circ-active-color: rgb(255, 246, 176);
+
+    --ruleta-radius: calc(min(min(100vh, 20vw), 400px));
+    --circ-radius: 1.8em;
+
+    position: relative;
+    padding-bottom: var(--circ-radius);
+    box-sizing: border-box;
+    display: inline-block;
+    width: calc(2.0*var(--ruleta-radius));
+    height: calc(2.0*var(--ruleta-radius));
+}
+
+.menu {
+    display: inline-block;
+    position: absolute;
+    top: 5em;
+    margin-left: 3em;
+    width: 276px;
+}
+
+.menu p {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 1em;
+    word-wrap: break-word;
+}
+
+main {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 1%;
+    padding-bottom: 0;
+}
+
+.result {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    visibility: visible;
+    font-family: "Candara";
+    color: white;
+}
+
+.result p:first-child {
+    margin: 0;
+}
+
+.result p {
+    margin-top: 5px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-right: 2em;
+    color: white;
+}
+
+footer > span {
+    background-color: #025599;
+    padding-left: 3px;
+    padding-right: 3px;
+    font-weight: bold;  
+}

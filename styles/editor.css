@@ -1,0 +1,50 @@
+h1 {
+    color: white;
+}
+
+main {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    max-width: max-content;
+}
+
+.input-holder > div {
+    margin-bottom: 6px;
+}
+
+.input-holder > div:last-child {
+    margin-bottom: 0.8em;
+}
+
+.input-buttons {
+    width: 100%;
+    display: inline-flex;
+    justify-content: right;
+}
+
+.remove-button {
+    margin-left: 2px;
+    border: 0;
+    border-radius: 20%;
+}
+
+.letter-input {
+    width: 3em;
+    text-align: center;
+    margin-right: 2px;
+}
+
+.question-input {
+    margin-right: 2px;
+    width: 25em;
+}
+
+.answer-input {
+    width: 15em;
+}
+
+#new-row-button {
+    margin-right: 3px;
+}

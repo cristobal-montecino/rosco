@@ -1,0 +1,23 @@
+body {
+    padding: 0;
+    background-image: url("images/wallpaper.png"), linear-gradient(#192758, #2E4F9E);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    min-width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden auto;
+    font-family: 'serif';
+}
+
+body > footer {
+    align-self: flex-end;
+    padding-bottom: 10px;
+}
