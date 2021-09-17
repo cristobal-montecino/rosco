@@ -225,7 +225,9 @@ function startGame() {
         if (angle >= angleOf(num_questions-1, num_questions)) {
             clearInterval(interval);
             addInputListener(checkAnswer);
-            setQuestion(0);
+            if (num_questions > 0) {
+                setQuestion(0);
+            }
             enableInput();
         }
     }, 1/speed);
