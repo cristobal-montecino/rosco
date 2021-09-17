@@ -20,6 +20,8 @@ let hideCircles;
 let getAnswerValue;
 let addInputListener;
 let removeInputListeners;
+let setCircleBackgroundColorForAnswer;
+let setCircleBackgroundColorToActiveFromIncomplete;
 
 let num_questions;
 
@@ -97,7 +99,9 @@ function onload() {
         for (circ of circs) {
             const final_angle = angleOf(i++, num_questions);
             const current_angle = Math.min(angle, final_angle);
-            circ.style.setProperty('opacity', '100%');
+            circ.classList.remove('atomic-opacity--0');
+            circ.classList.add('atomic-opacity--1');
+
             circ.style.setProperty('--rotation-angle', `${current_angle}deg`);
     
             if (current_angle != final_angle) {
@@ -110,14 +114,40 @@ function onload() {
         answer_input.value = '';
     }
     
+    setCircleBackgroundColorForAnswer = function (circle_idx, color_css) {
+        const circ = circs[circle_idx];
+
+        circ.classList.remove('atomic-background-color--var--circ-active-color');
+        circ.classList.add(`atomic-background-color--${color_css}`);
+    }
+
+    setCircleBackgroundColorToActiveFromIncomplete = function (circle_idx, color_css) {
+        const circ = circs[circle_idx];
+
+        circ.classList.remove('atomic-background-color--var--circ-incomplete-color');
+        circ.classList.add('atomic-background-color--var--circ-active-color');
+    }
+
     setCircleBackgroundColor = function (circle_idx, color_css) {
-        circs[circle_idx].style.setProperty('background-color', color_css);
+        const circ = circs[circle_idx];
+
+        circ.classList.remove('atomic-background-color--var--circ-complete-correct-color');
+        circ.classList.remove('atomic-background-color--var--circ-complete-incorrect-color');
+        circ.classList.remove('atomic-background-color--var--circ-incomplete-color');
+        circ.classList.remove('atomic-background-color--var--circ-active-color');
+
+        circ.classList.add(`atomic-background-color--${color_css}`);
     }
     
     hideCircles = function () {
         for (circ of circs) {
-            circ.style.setProperty('opacity', '0%');
-            circ.style.setProperty('background-color', 'var(--circ-incomplete-color)');
+            circ.classList.remove('atomic-opacity--1');
+            circ.classList.add('atomic-opacity--0');
+
+            circ.classList.remove('atomic-background-color--var--circ-complete-correct-color');
+            circ.classList.remove('atomic-background-color--var--circ-complete-incorrect-color');
+
+            circ.classList.add('atomic-background-color--var--circ-incomplete-color');
         }
     }
     
@@ -143,7 +173,7 @@ function onload() {
 
 function setQuestion(question_idx) {
     setQuestionString(QUESTIONS[question_idx]);
-    setCircleBackgroundColor(question_idx, 'var(--circ-active-color)');
+    setCircleBackgroundColorToActiveFromIncomplete(question_idx);
 }
 
 let question_idx = 0;
@@ -158,13 +188,12 @@ function gameover() {
 
 function checkAnswer() {
     const answer_value = getAnswerValue();
-    num_correct_answer += (answer_value.toLowerCase() == ANSWERS[question_idx].toLowerCase());
+    const is_correct = answer_value.toLowerCase() == ANSWERS[question_idx].toLowerCase();
 
-    const color = (answer_value.toLowerCase() == ANSWERS[question_idx].toLowerCase())
-            ? 'var(--circ-complete-correct-color)'
-            : 'var(--circ-complete-incorrect-color)';    
+    num_correct_answer += is_correct;
+    const color = is_correct ? 'var--circ-complete-correct-color' : 'var--circ-complete-incorrect-color';
 
-    setCircleBackgroundColor(question_idx, color);
+    setCircleBackgroundColorForAnswer(question_idx, color);
     clearInput();
 
     if (question_idx == num_questions - 1) {
@@ -174,7 +203,9 @@ function checkAnswer() {
     }
 }
 
-function startGame() {
+function resetState() {
+    removeInputListeners();
+
     num_correct_answer = 0;
     question_idx = 0;
 
@@ -184,6 +215,10 @@ function startGame() {
     setQuestionString('Pregunta:');
     
     hideCircles();
+}
+
+function startGame() {
+    resetState();
 
     let angle = STARTING_ANGLE;
     const interval = setInterval(() => {

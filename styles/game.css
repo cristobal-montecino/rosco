@@ -91,3 +91,27 @@ footer > span {
     padding-right: 3px;
     font-weight: bold;  
 }
+
+.atomic-opacity--0 {
+    opacity: 0;
+}
+
+.atomic-opacity--1 {
+    opacity: 1;
+}
+
+.atomic-background-color--var--circ-active-color {
+    background-color: var(--circ-active-color);
+}
+
+.atomic-background-color--var--circ-complete-correct-color {
+    background-color: var(--circ-complete-correct-color);
+}
+
+.atomic-background-color--var--circ-complete-incorrect-color {
+    background-color: var(--circ-complete-incorrect-color);
+}
+
+.atomic-background-color--var--circ-incomplete-color {
+    background-color: var(--circ-incomplete-color);
+}

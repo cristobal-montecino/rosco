@@ -3,7 +3,6 @@ body {
     background-image: url("../images/wallpaper.png"), linear-gradient(#192758, #2E4F9E);
     background-position: bottom right;
     background-repeat: no-repeat;
-    
     box-sizing: border-box;
     min-width: 100vw;
     min-height: 100vh;
