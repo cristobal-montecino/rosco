@@ -99,7 +99,6 @@ function onload() {
         for (circ of circs) {
             const final_angle = angleOf(i++, num_questions);
             const current_angle = Math.min(angle, final_angle);
-            circ.classList.remove('atomic-opacity--0');
             circ.classList.add('atomic-opacity--1');
 
             circ.style.setProperty('--rotation-angle', `${current_angle}deg`);
@@ -142,8 +141,8 @@ function onload() {
     hideCircles = function () {
         for (circ of circs) {
             circ.classList.remove('atomic-opacity--1');
-            circ.classList.add('atomic-opacity--0');
 
+            circ.classList.remove('atomic-background-color--var--circ-active-color');
             circ.classList.remove('atomic-background-color--var--circ-complete-correct-color');
             circ.classList.remove('atomic-background-color--var--circ-complete-incorrect-color');
 

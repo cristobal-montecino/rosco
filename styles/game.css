@@ -92,10 +92,6 @@ footer > span {
     font-weight: bold;  
 }
 
-.atomic-opacity--0 {
-    opacity: 0;
-}
-
 .atomic-opacity--1 {
     opacity: 1;
 }
